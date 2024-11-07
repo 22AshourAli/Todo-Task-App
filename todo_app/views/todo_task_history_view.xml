@@ -1,0 +1,58 @@
+<odoo>
+    <record id="todo_task_history_view_tree" model="ir.ui.view">
+        <field name="name">todo task history tree</field>
+        <field name="model">todo.task.history</field>
+        <field name="arch" type="xml">
+            <tree  create="0" delete="0" edit="0" class="header_custom" multi_edit="1">
+                <field name="user_id"/>
+                <field name="todo_id"/>
+                <field name="old_state"/>
+                <field name="new_state"/>
+                <field name="reason"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="todo_task_history_view_form" model="ir.ui.view">
+        <field name="name">todo task history form</field>
+        <field name="model">todo.task.history</field>
+        <field name="arch" type="xml">
+            <form create="0" delete="0" edit="0">
+                <sheet>
+                    <group>
+
+
+                        <group>
+                            <field class="fs-2 fw-bold" name="user_id"/>
+                            <field class="fs-2 fw-bold" name="todo_id"/>
+
+                        </group>
+                        <group>
+                            <field class="fs-2 fw-bold" name="old_state"/>
+                            <field class="fs-2 fw-bold" name="new_state"/>
+                            <field class="fs-2 fw-bold" name="reason"/>
+                        </group>
+                    </group>
+
+                </sheet>
+
+
+            </form>
+        </field>
+    </record>
+
+
+
+    <record id="todo_task_history_action" model="ir.actions.act_window">
+        <field name="name">Todo Task History</field>
+        <field name="res_model">todo.task.history</field>
+    </record>
+    <menuitem
+            id="todo_task_history_menu_item"
+            name="History"
+            parent="todo_history_menu"
+            action="todo_task_history_action"
+    />
+
+</odoo>

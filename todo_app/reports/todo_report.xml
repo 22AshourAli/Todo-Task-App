@@ -1,0 +1,157 @@
+<odoo>
+    <record id="todo_report" model="ir.actions.report">
+        <field name="name">Todo Task Report</field>
+        <field name="model">todo.task</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_todo_task"/>
+        <field name="binding_type">report</field>
+        <field name="report_name">todo_app.todo_report_template</field>
+    </record>
+
+    <template id="todo_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <style>
+                        /* تنسيقات مخصصة للرأس، التذييل، الجداول، والنصوص */
+                        .report-title {
+                            font-size: 24px;
+                            font-weight: bold;
+                            color: #4a90e2;
+                            text-align: center;
+                            margin-bottom: 20px;
+                        }
+                        .header-content, .footer-content {
+                            font-size: 12px;
+                            color: #777;
+                        }
+                        .header-content {
+                            border-bottom: 2px solid #4a90e2;
+                            padding-bottom: 5px;
+                        }
+                        .footer-content {
+                            border-top: 2px solid #4a90e2;
+                            padding-top: 5px;
+                            text-align: center;
+                        }
+                        .pagination {
+                            text-align: right;
+                            font-size: 12px;
+                            color: #999;
+                        }
+                        .section-title {
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: #333;
+                            border-bottom: 2px solid #4a90e2;
+                            padding-bottom: 5px;
+                            margin-top: 20px;
+                            margin-bottom: 10px;
+                        }
+                        .task-details, .timesheet-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-bottom: 15px;
+                        }
+                        .task-details td, .timesheet-table th, .timesheet-table td {
+                            padding: 8px;
+                            border: 1px solid #ddd;
+                        }
+                        .task-details td {
+                            font-weight: bold;
+                            color: #555;
+                        }
+                        .timesheet-table th {
+                            background-color: #f3f3f3;
+                            color: #333;
+                            text-align: left;
+                        }
+                        .description {
+                            font-size: 14px;
+                            line-height: 1.5;
+                            color: #666;
+                        }
+                    </style>
+
+                    <!-- Header Content -->
+                    <div class="header-content">
+                        <div>Company Name</div>
+                        <div>Todo Task Report</div>
+                        <div>Date: <span t-esc="o.due_date"/></div>
+                    </div>
+
+                    <!-- Report Body -->
+                    <div class="page">
+                        <h2 class="report-title">Todo Task Report</h2>
+
+                        <!-- Task Information -->
+                        <table class="task-details">
+                            <tr>
+                                <td>Task Name:</td>
+                                <td><span t-esc="o.name"/></td>
+                            </tr>
+                            <tr>
+                                <td>Due Date:</td>
+                                <td><span t-esc="o.due_date"/></td>
+                            </tr>
+                            <tr>
+                                <td>Assigned To:</td>
+                                <td><span t-esc="o.assign_to_id.name"/></td>
+                            </tr>
+                            <tr>
+                                <td>Status:</td>
+                                <td><span t-esc="o.state"/></td>
+                            </tr>
+                        </table>
+
+                        <!-- Time Information -->
+                        <div class="section-title">Time Information</div>
+                        <table class="task-details">
+                            <tr>
+                                <td>Estimated Time:</td>
+                                <td><span t-esc="o.estimated_time"/> hours</td>
+                            </tr>
+                            <tr>
+                                <td>Total Time Spent:</td>
+                                <td><span t-esc="o.total_time_spent"/> hours</td>
+                            </tr>
+                        </table>
+
+                        <!-- Timesheet Entries -->
+                        <div class="section-title">Timesheet Entries</div>
+                        <table class="timesheet-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee</th>
+                                    <th>Date</th>
+                                    <th>Worked Hours</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.timesheet_line_ids" t-as="line">
+                                    <tr>
+                                        <td><span t-esc="line.employee_id.name"/></td>
+                                        <td><span t-esc="line.date"/></td>
+                                        <td><span t-esc="line.worked_hours"/> hours</td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <!-- Task Description -->
+                        <div class="section-title">Task Description</div>
+                        <p class="description" t-esc="o.description"/>
+                    </div>
+
+                    <!-- Footer Content -->
+                    <div class="footer-content">
+                        <span>Generated by Ashour Ali</span> |
+                        <span>Contact us: ashourali1v@gmail.com</span>
+                    </div>
+
+
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

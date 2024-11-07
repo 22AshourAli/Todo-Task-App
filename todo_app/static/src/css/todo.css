@@ -1,0 +1,68 @@
+
+.header_custom table thead > tr > th {
+background-color: #04AA6D !important;
+color: white !important;
+font-size:18px !important;
+}
+.header_custom table thead > tr > th:nth-child(2) {
+width:250px !important;
+}
+.header_custom table th, td {
+ border-bottom: 1px solid #ddd !important;
+
+}
+.o-dropdown .fa-cog{
+color: #04AA6D !important;
+font-size:28px !important;
+padding:4px 8px !important;
+}
+.o-dropdown .fa {
+font-size:28px !important;
+padding:4px 8px !important;
+}
+.o_menu_sections .dropdown-toggle {
+background:transparent !important}
+.o_list_button_add{
+font-weight:500 !important;
+background-color: #04AA6D !important;
+border:none !important;
+color: white !important;
+padding:12px 20px !important;
+letter-spacing: 1.5px !important;
+transition:all 0.3s !important;
+}
+.o_list_button_add:hover{
+background-color: white !important;
+border: 2px solid #04AA6D !important;
+color: #04AA6D !important;
+}
+.o_form_button_create{
+font-weight:500 !important;
+background-color: #04AA6D !important;
+border:none !important;
+color: white !important;
+padding:12px 20px !important;
+letter-spacing: 1.5px !important;
+transition:all 0.3s !important;
+}
+.o_form_button_create:hover{
+background-color: white !important;
+border: 2px solid #04AA6D !important;
+color: #04AA6D !important;
+}
+nav{
+background-color: #04AA6D !important;
+color: white !important;
+}
+.o-dropdown--menu .dropdown-item:not(.disabled):not(:disabled), .o-dropdown--menu .dropdown-item:not(.disabled):not(:disabled) label{
+display:inline-block !important;
+padding:4px 12px !important;
+background-color: #04AA6D !important;
+color: white !important;
+margin:4px 0px !important;
+transition:all 0.3s !important;
+}
+:not(.dropstart) > .dropdown-item.active:not(.dropdown-item_active_noarrow):before, :not(.dropstart) > .dropdown-item.selected:not(.dropdown-item_active_noarrow):before{
+color: white !important;
+left: 16px !important;
+}
